@@ -1,6 +1,7 @@
 // Globals
 USERNAME = ""
-PRIMARY_URL ="http://localhost:8000/"
+// PRIMARY_URL ="http://localhost:8000/"
+PRIMARY_URL = "https://qrcode-logistics-app.herokuapp.com/"
 // Adding Event Listeners
 document.getElementById("main-icon").addEventListener("click",loginUser)
 document.getElementById("form-submit-button").addEventListener("click",submitForm)
