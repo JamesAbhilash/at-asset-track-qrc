@@ -121,7 +121,6 @@ function checkValidation(){
         || val_Mode  == ''
         || val_Category  == ''
         || val_Contents  == ''
-        || val_Fragile  == ''
         || val_TruckOrientation  == ''
         || val_Status  == ''
         || val_Destination  == ''
