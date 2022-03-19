@@ -1,0 +1,19 @@
+{
+  "name": "j_api_qrc",
+  "version": "1.0.0",
+  "description": "packaging qr code encode decode database",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "James Srigiri",
+  "license": "ISC",
+  "dependencies": {
+    "@notionhq/client": "^1.0.1",
+    "axios": "^0.26.1",
+    "body-parser": "^1.19.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3"
+  }
+}

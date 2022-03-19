@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR CODE SCANNER</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <script src="../assets/js/main_cs.js" defer></script>
+    <div class="ui container">
+      <h2 class="ui large icon header center aligned blue">
+        <i
+          id="main-icon"
+          class="circular qrcode icon"
+          style="user-select: auto; margin-top: 1rem"
+        ></i
+        >QR CODE LOGISTICS
+      </h2>
+      <div class="ui icon input fluid">
+        <input
+          id="user-code"
+          type="text"
+          placeholder="Enter Code"
+          style="user-select: auto"
+        />
+        <i class="user secret icon" style="user-select: auto"></i>
+      </div>
+      <div class="ui divider"></div>
+
+      <div
+        id="main-details-form"
+        class="ui container"
+        style="max-height: 0; overflow-x: hidden"
+      >
+        <h3
+          class="ui medium header center aligned blue"
+          id="information-section-header"
+        >
+          ENTER NEW DETAILS
+        </h3>
+        <form class="ui form">
+          <div class="ui grid">
+            <div class="eight wide column field">
+              <label></label>
+              <input
+                type="text"
+                name="floor-number"
+                placeholder="Floor Number"
+              />
+            </div>
+            <div class="eight wide column field">
+              <label></label>
+              <select class="ui dropdown" name="mode" placeholder="Mode">
+                <option value="">Mode</option>
+                <option value="OPEN">OPEN</option>
+                <option value="BOXED">BOXED</option>
+              </select>
+            </div>
+          </div>
+          <div class="ui field">
+            <div class="ui checkbox">
+              <input class="category-cb" type="checkbox" name="FURNITURE" />
+              <label style="margin-right: 1rem">FURNITURE</label>
+            </div>
+            <div class="ui checkbox">
+              <input class="category-cb" type="checkbox" name="TOOLS" />
+              <label style="margin-right: 1rem">TOOLS</label>
+            </div>
+            <div class="ui checkbox">
+              <input class="category-cb" type="checkbox" name="EQUIPMENT" />
+              <label style="margin-right: 1rem">EQUIPMENT</label>
+            </div>
+            <div class="ui checkbox">
+              <input class="category-cb" type="checkbox" name="RECORDS" />
+              <label style="margin-right: 1rem">RECORDS</label>
+            </div>
+          </div>
+          <div class="ui field">
+            <textarea
+              name="contents"
+              rows="1"
+              style="user-select: auto"
+              placeholder="Contents"
+            ></textarea>
+          </div>
+          <div class="ui field">
+            <div class="ui checkbox toggle">
+              <input type="checkbox" name="fragile" checked />
+              <label>Fragile</label>
+            </div>
+          </div>
+          <div class="ui grid">
+            <div class="ui field eight wide column">
+              <label></label>
+              <select
+                class="ui dropdown"
+                name="truck-orientation"
+                placeholder="Truck Orientation"
+              >
+                <option value="">Truck Orientation</option>
+                <option value="FRONT">FRONT</option>
+                <option value="MIDDLE">MIDDLE</option>
+                <option value="BACK">BACK</option>
+                <option value="SIDES">SIDES</option>
+              </select>
+            </div>
+            <div class="ui field eight wide column">
+              <label></label>
+              <select class="ui dropdown" name="status" placeholder="status">
+                <option value="">Status</option>
+                <option value="IN PROGRESS">IN PROGRESS</option>
+                <option value="PACKED">PACKED</option>
+                <option value="INTRANSIT">INTRANSIT</option>
+                <option value="RECEIVED">RECEIVED</option>
+                <option value="REOPENED">REOPENED</option>
+                <option value="REPACKED">REPACKED</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ui field">
+            <label></label>
+            <select
+              class="ui dropdown"
+              name="destination"
+              placeholder="Destination"
+            >
+              <option value="">Destination</option>
+              <option value="AMTRON">AMTRON</option>
+              <option value="HO">HO</option>
+            </select>
+          </div>
+
+          <div class="ui field">
+            <textarea
+              name="destination-details"
+              rows="1"
+              style="user-select: auto"
+              placeholder="Destination Details"
+            ></textarea>
+          </div>
+        </form>
+        <button
+          id="form-submit-button"
+          class="ui button fluid blue basic"
+          style="margin-top: 1rem"
+        >
+          SUBMIT
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"
+      integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </body>
+</html>
