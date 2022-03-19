@@ -1,7 +1,7 @@
 // Globals
 USERNAME = ""
-// PRIMARY_URL ="http://localhost:8000/"
-PRIMARY_URL = "https://qrcode-logistics-app.herokuapp.com/"
+PRIMARY_URL ="http://localhost:8000/"
+// PRIMARY_URL = "https://qrcode-logistics-app.herokuapp.com/"
 // Adding Event Listeners
 document.getElementById("main-icon").addEventListener("click",loginUser)
 document.getElementById("form-submit-button").addEventListener("click",submitForm)
@@ -74,6 +74,10 @@ async function editOldItemSetup(previousDetails){
 
 // Submit Form
 async function submitForm(){
+    const checkValidationValue = checkValidation()
+    if (checkValidationValue !== "OK"){
+        return
+    }
     loadingAnimationToggle()
     const submitType = await checkDataPreSub()
     const propertiesData = propertiesObjectGenerator(submitType)
@@ -91,6 +95,42 @@ async function checkDataPreSub(){
     const url = PRIMARY_URL + "qrscan/" + qrid
     const response = await webAppCalls(url)
     return response.results.length 
+}
+
+// Check Validation
+function checkValidation(){
+    const val_QRCID = window.location.pathname.replace("/","").trim()
+    const val_FloorNumber = document.getElementsByName("floor-number")[0].value
+    const val_Mode = document.getElementsByName("mode")[0].value
+    var val_Category = []
+    var temp_category_array = document.getElementsByClassName("category-cb")
+    Array.prototype.forEach.call(temp_category_array, function(category) {
+        if(category.checked){
+            val_Category.push(category.name)
+        }
+    })
+    const val_Contents = document.getElementsByName("contents")[0].value
+    const val_Fragile = document.getElementsByName("fragile")[0].checked
+    const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
+    const val_Status = document.getElementsByName("status")[0].value
+    const val_Destination = document.getElementsByName("destination")[0].value
+    const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
+    if(
+            val_QRCID == ''
+        || val_FloorNumber == ''
+        || val_Mode  == ''
+        || val_Category  == ''
+        || val_Contents  == ''
+        || val_Fragile  == ''
+        || val_TruckOrientation  == ''
+        || val_Status  == ''
+        || val_Destination  == ''
+        || val_DestinationDetails == ''
+    ){
+        window.alert("Fields Cannot Be Empty!")
+        return ("VALIDATION FAIL")
+    }
+    return ("OK")
 }
 
 
