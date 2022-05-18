@@ -16,7 +16,8 @@ app.use(cookieParser())
 // Authirized Users
 const authorizedUsers = [
   "9573784242_1234",
-  "9866074207_1213"
+  "9866074207_1213",
+  "9866706524_0102"
 ]
 
 // Notion data
