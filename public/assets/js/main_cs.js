@@ -1,7 +1,15 @@
 // Globals
 USERNAME = ""
+// **DEV SECTION BEGIN
+PRIMARY_URL ="http://192.168.29.114:8000/"
 // PRIMARY_URL ="http://localhost:8000/"
-PRIMARY_URL = "https://qrcode-asset-tracking.herokuapp.com/"
+// **DEV SECTION END
+
+// **PROD SECTION BEGIN
+// PRIMARY_URL = "https://qrcode-asset-tracking.herokuapp.com/"
+// **PROD SECTION END
+
+
 // Adding Event Listeners
 document.getElementById("main-icon").addEventListener("click",loginUser)
 document.getElementById("form-submit-button").addEventListener("click",submitForm)
