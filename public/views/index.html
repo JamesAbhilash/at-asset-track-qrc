@@ -22,7 +22,7 @@
           class="circular qrcode icon"
           style="user-select: auto; margin-top: 1rem"
         ></i
-        >QR CODE LOGISTICS
+        >QR ASSET TRACKING
       </h2>
       <div class="ui icon input fluid">
         <input
@@ -50,11 +50,20 @@
           <div class="ui grid">
             <div class="eight wide column field">
               <label></label>
-              <input
-                type="text"
+              <select
+                class="ui dropdown"
                 name="floor-number"
                 placeholder="Floor Number"
-              />
+              >
+                <option value="">Floor Number</option>
+                <option value="GROUND">GROUND</option>
+                <option value="MEZ_GROUND">MEZ_GROUND</option>
+                <option value="FIRST">FIRST</option>
+                <option value="SECOND">SECOND</option>
+                <option value="THIRD">THIRD</option>
+                <option value="FOURTH">FOURTH</option>
+                <option value="PENT_HOUSE">PENT_HOUSE</option>
+              </select>
             </div>
             <div class="eight wide column field">
               <label></label>
