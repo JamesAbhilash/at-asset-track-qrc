@@ -69,8 +69,11 @@ async function editOldItemSetup(previousDetails){
     // Modifying values in the form
     document.getElementsByName("floor-number")[0].value = deconstruct(previousEntryData,"Floor Number")[0]['plain_text']
     document.getElementsByName("room")[0].value = deconstruct(previousEntryData,"Room")['name']
-    deconstruct(previousEntryData,"Category").forEach(category => {
-        document.getElementsByName(category["name"])[0].checked = true
+    const category_selected = deconstruct(previousEntryData,"Category")['name']
+    document.getElementsByName("category").forEach(category_element => {
+        if(category_selected==category_element.value){
+            category_element.checked = true
+        }
     })
     document.getElementsByName("contents")[0].value = deconstruct(previousEntryData,"Contents")[0]['plain_text']
     document.getElementsByName("fragile")[0].checked = deconstruct(previousEntryData, "Fragile")
@@ -110,13 +113,19 @@ function checkValidation(){
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
     const val_Room = document.getElementsByName("room")[0].value
-    var val_Category = []
-    var temp_category_array = document.getElementsByClassName("category-cb")
-    Array.prototype.forEach.call(temp_category_array, function(category) {
-        if(category.checked){
-            val_Category.push(category.name)
+    var val_Category
+    document.getElementsByName("category").forEach(category_element => {
+        if(category_element.checked){
+            val_Category = category_element.value
         }
     })
+    // var val_Category = []
+    // var temp_category_array = document.getElementsByClassName("category-cb")
+    // Array.prototype.forEach.call(temp_category_array, function(category) {
+    //     if(category.checked){
+    //         val_Category.push(category.name)
+    //     }
+    // })
     const val_Contents = document.getElementsByName("contents")[0].value
     const val_Fragile = document.getElementsByName("fragile")[0].checked
     const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
@@ -173,13 +182,19 @@ function propertiesObjectGenerator(submitType){
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
     const val_Room = document.getElementsByName("room")[0].value
-    var val_Category = []
-    var temp_category_array = document.getElementsByClassName("category-cb")
-    Array.prototype.forEach.call(temp_category_array, function(category) {
-        if(category.checked){
-            val_Category.push(category.name)
+    var val_Category
+    document.getElementsByName("category").forEach(category_element => {
+        if(category_element.checked){
+            val_Category = category_element.value
         }
     })
+    // var val_Category = []
+    // var temp_category_array = document.getElementsByClassName("category-cb")
+    // Array.prototype.forEach.call(temp_category_array, function(category) {
+    //     if(category.checked){
+    //         val_Category.push(category.name)
+    //     }
+    // })
     const val_Contents = document.getElementsByName("contents")[0].value
     const val_Fragile = document.getElementsByName("fragile")[0].checked
     const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value

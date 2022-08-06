@@ -131,8 +131,10 @@ function itemObjectGenerator(req, res, next) {
     },
     "Category": {
       id: "EZ%60U",
-      type: "multi_select",
-      multi_select: multiSelectObjectGenerator(requestBody["Category"]),
+      type: "select",
+      select: {
+        name: requestBody["Category"],
+      },
     },
     "Destination": {
       id: "%5CXtx",
