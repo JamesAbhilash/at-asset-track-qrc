@@ -86,7 +86,6 @@ async function editOldItemSetup(previousDetails){
     itemSubCategoryListGenerator()
     document.getElementsByName("sub-category")[0].value = deconstruct(previousEntryData,"Sub Category")['name']
     document.getElementsByName("action")[0].value = deconstruct(previousEntryData,"Action")['name']
-    document.getElementsByName("destination-details")[0].value = deconstruct(previousEntryData,"Destination Details")[0]['plain_text']
 }
 
 // Submit Form
@@ -137,7 +136,6 @@ function checkValidation(){
     const val_Item = document.getElementsByName("item")[0].value
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
     const val_Action = document.getElementsByName("action")[0].value
-    const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     if(
             val_QRCID == ''
         || val_FloorNumber == ''
@@ -147,7 +145,6 @@ function checkValidation(){
         || val_Item  == ''
         || val_SubCategory  == ''
         || val_Action  == ''
-        || val_DestinationDetails == ''
     ){
         window.alert("Fields Cannot Be Empty!")
         return ("VALIDATION FAIL")
@@ -206,9 +203,7 @@ function propertiesObjectGenerator(submitType){
     const val_Item = document.getElementsByName("item")[0].value
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
     const val_Action = document.getElementsByName("action")[0].value
-    const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     const propertiesObject = {
-        "DestinationDetails": val_DestinationDetails,
         "Photo": val_Photo,
         "Item": val_Item,
         "Category": val_Category,

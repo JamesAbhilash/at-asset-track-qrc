@@ -94,29 +94,6 @@ function authUser(req, res, next){
 function itemObjectGenerator(req, res, next) {
   const requestBody = req.body
   var templateObject = {
-    "Destination Details": {
-      id: "%3DvTo",
-      type: "rich_text",
-      rich_text: [
-        {
-          type: "text",
-          text: {
-            content: requestBody["DestinationDetails"],
-            link: null,
-          },
-          annotations: {
-            bold: false,
-            italic: false,
-            strikethrough: false,
-            underline: false,
-            code: false,
-            color: "default",
-          },
-          plain_text: requestBody["DestinationDetails"],
-          href: null,
-        },
-      ],
-    },
     "Photo": {
       id: "%3FF%5CR",
       type: "checkbox",
