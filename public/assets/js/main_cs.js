@@ -79,7 +79,7 @@ async function editOldItemSetup(previousDetails){
             category_element.checked = true
         }
     })
-    document.getElementsByName("contents")[0].value = deconstruct(previousEntryData,"Contents")[0]['plain_text']
+    document.getElementsByName("remarks")[0].value = deconstruct(previousEntryData,"Remarks")[0]['plain_text']
     document.getElementsByName("photo")[0].checked = deconstruct(previousEntryData, "Photo")
     document.getElementsByName("item")[0].value = deconstruct(previousEntryData,"Item")['name']
     // Running linked list generator for sub category dropdown list immediately after item gets populated
@@ -132,7 +132,7 @@ function checkValidation(){
     //         val_Category.push(category.name)
     //     }
     // })
-    const val_Contents = document.getElementsByName("contents")[0].value
+    const val_Remarks = document.getElementsByName("remarks")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
@@ -143,7 +143,7 @@ function checkValidation(){
         || val_FloorNumber == ''
         || val_Room  == ''
         || val_Category  == ''
-        || val_Contents  == ''
+        || val_Remarks  == ''
         || val_Item  == ''
         || val_SubCategory  == ''
         || val_Destination  == ''
@@ -201,7 +201,7 @@ function propertiesObjectGenerator(submitType){
     //         val_Category.push(category.name)
     //     }
     // })
-    const val_Contents = document.getElementsByName("contents")[0].value
+    const val_Remarks = document.getElementsByName("remarks")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
@@ -213,7 +213,7 @@ function propertiesObjectGenerator(submitType){
         "Item": val_Item,
         "Category": val_Category,
         "Destination":val_Destination,
-        "Contents": val_Contents,
+        "Remarks": val_Remarks,
         "FloorNumber": val_FloorNumber,
         "SubCategory": val_SubCategory,
         "Room":val_Room,

@@ -143,14 +143,14 @@ function itemObjectGenerator(req, res, next) {
         name: requestBody["Destination"],
       },
     },
-    "Contents": {
+    "Remarks": {
       id: "%5EPe%60",
       type: "rich_text",
       rich_text: [
         {
           type: "text",
           text: {
-            content: requestBody["Contents"],
+            content: requestBody["Remarks"],
             link: null,
           },
           annotations: {
@@ -161,7 +161,7 @@ function itemObjectGenerator(req, res, next) {
             code: false,
             color: "default",
           },
-          plain_text: requestBody["Contents"],
+          plain_text: requestBody["Remarks"],
           href: null,
         },
       ],
