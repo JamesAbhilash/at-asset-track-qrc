@@ -68,7 +68,7 @@ async function editOldItemSetup(previousDetails){
     window.alert(metaDetails)
     // Modifying values in the form
     document.getElementsByName("floor-number")[0].value = deconstruct(previousEntryData,"Floor Number")[0]['plain_text']
-    document.getElementsByName("mode")[0].value = deconstruct(previousEntryData,"Mode")['name']
+    document.getElementsByName("room")[0].value = deconstruct(previousEntryData,"Room")['name']
     deconstruct(previousEntryData,"Category").forEach(category => {
         document.getElementsByName(category["name"])[0].checked = true
     })
@@ -109,7 +109,7 @@ async function checkDataPreSub(){
 function checkValidation(){
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
-    const val_Mode = document.getElementsByName("mode")[0].value
+    const val_Room = document.getElementsByName("room")[0].value
     var val_Category = []
     var temp_category_array = document.getElementsByClassName("category-cb")
     Array.prototype.forEach.call(temp_category_array, function(category) {
@@ -126,7 +126,7 @@ function checkValidation(){
     if(
             val_QRCID == ''
         || val_FloorNumber == ''
-        || val_Mode  == ''
+        || val_Room  == ''
         || val_Category  == ''
         || val_Contents  == ''
         || val_TruckOrientation  == ''
@@ -172,7 +172,7 @@ function propertiesObjectGenerator(submitType){
     const submitCode = usernameCookie()
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
-    const val_Mode = document.getElementsByName("mode")[0].value
+    const val_Room = document.getElementsByName("room")[0].value
     var val_Category = []
     var temp_category_array = document.getElementsByClassName("category-cb")
     Array.prototype.forEach.call(temp_category_array, function(category) {
@@ -195,7 +195,7 @@ function propertiesObjectGenerator(submitType){
         "Contents": val_Contents,
         "FloorNumber": val_FloorNumber,
         "Status": val_Status,
-        "Mode":val_Mode,
+        "Room":val_Room,
         "QRCID": val_QRCID
     }
     if(submitType == 0){

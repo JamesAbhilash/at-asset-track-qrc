@@ -194,11 +194,11 @@ function itemObjectGenerator(req, res, next) {
         name: requestBody["Status"],
       },
     },
-    "Mode": {
+    "Room": {
       id: "%3B%3AsT",
       type: "select",
       select: {
-        name: requestBody["Mode"],
+        name: requestBody["Room"],
       },
     },
     "QRCID": {
