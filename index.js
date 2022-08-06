@@ -136,11 +136,11 @@ function itemObjectGenerator(req, res, next) {
         name: requestBody["Category"],
       },
     },
-    "Destination": {
+    "Action": {
       id: "%5CXtx",
       type: "select",
       select: {
-        name: requestBody["Destination"],
+        name: requestBody["Action"],
       },
     },
     "Remarks": {

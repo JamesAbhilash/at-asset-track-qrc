@@ -85,7 +85,7 @@ async function editOldItemSetup(previousDetails){
     // Running linked list generator for sub category dropdown list immediately after item gets populated
     itemSubCategoryListGenerator()
     document.getElementsByName("sub-category")[0].value = deconstruct(previousEntryData,"Sub Category")['name']
-    document.getElementsByName("destination")[0].value = deconstruct(previousEntryData,"Destination")['name']
+    document.getElementsByName("action")[0].value = deconstruct(previousEntryData,"Action")['name']
     document.getElementsByName("destination-details")[0].value = deconstruct(previousEntryData,"Destination Details")[0]['plain_text']
 }
 
@@ -136,7 +136,7 @@ function checkValidation(){
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
-    const val_Destination = document.getElementsByName("destination")[0].value
+    const val_Action = document.getElementsByName("action")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     if(
             val_QRCID == ''
@@ -146,7 +146,7 @@ function checkValidation(){
         || val_Remarks  == ''
         || val_Item  == ''
         || val_SubCategory  == ''
-        || val_Destination  == ''
+        || val_Action  == ''
         || val_DestinationDetails == ''
     ){
         window.alert("Fields Cannot Be Empty!")
@@ -205,14 +205,14 @@ function propertiesObjectGenerator(submitType){
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
-    const val_Destination = document.getElementsByName("destination")[0].value
+    const val_Action = document.getElementsByName("action")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     const propertiesObject = {
         "DestinationDetails": val_DestinationDetails,
         "Photo": val_Photo,
         "Item": val_Item,
         "Category": val_Category,
-        "Destination":val_Destination,
+        "Action":val_Action,
         "Remarks": val_Remarks,
         "FloorNumber": val_FloorNumber,
         "SubCategory": val_SubCategory,
