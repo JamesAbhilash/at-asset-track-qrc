@@ -118,7 +118,7 @@ function checkValidation(){
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
     const val_Room = document.getElementsByName("room")[0].value
-    var val_Category
+    var val_Category = ''
     document.getElementsByName("category").forEach(category_element => {
         if(category_element.checked){
             val_Category = category_element.value
