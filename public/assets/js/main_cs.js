@@ -124,13 +124,6 @@ function checkValidation(){
             val_Category = category_element.value
         }
     })
-    // var val_Category = []
-    // var temp_category_array = document.getElementsByClassName("category-cb")
-    // Array.prototype.forEach.call(temp_category_array, function(category) {
-    //     if(category.checked){
-    //         val_Category.push(category.name)
-    //     }
-    // })
     const val_Remarks = document.getElementsByName("remarks")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
@@ -191,13 +184,6 @@ function propertiesObjectGenerator(submitType){
             val_Category = category_element.value
         }
     })
-    // var val_Category = []
-    // var temp_category_array = document.getElementsByClassName("category-cb")
-    // Array.prototype.forEach.call(temp_category_array, function(category) {
-    //     if(category.checked){
-    //         val_Category.push(category.name)
-    //     }
-    // })
     const val_Remarks = document.getElementsByName("remarks")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
