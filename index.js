@@ -117,10 +117,10 @@ function itemObjectGenerator(req, res, next) {
         },
       ],
     },
-    "Fragile": {
+    "Photo": {
       id: "%3FF%5CR",
       type: "checkbox",
-      checkbox: requestBody["Fragile"],
+      checkbox: requestBody["Photo"],
     },
     "Truck Orientation": {
       id: "ELMv",

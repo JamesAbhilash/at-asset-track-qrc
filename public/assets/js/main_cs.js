@@ -76,7 +76,7 @@ async function editOldItemSetup(previousDetails){
         }
     })
     document.getElementsByName("contents")[0].value = deconstruct(previousEntryData,"Contents")[0]['plain_text']
-    document.getElementsByName("fragile")[0].checked = deconstruct(previousEntryData, "Fragile")
+    document.getElementsByName("photo")[0].checked = deconstruct(previousEntryData, "Photo")
     document.getElementsByName("truck-orientation")[0].value = deconstruct(previousEntryData,"Truck Orientation")['name']
     document.getElementsByName("status")[0].value = deconstruct(previousEntryData,"Status")['name']
     document.getElementsByName("destination")[0].value = deconstruct(previousEntryData,"Destination")['name']
@@ -127,7 +127,7 @@ function checkValidation(){
     //     }
     // })
     const val_Contents = document.getElementsByName("contents")[0].value
-    const val_Fragile = document.getElementsByName("fragile")[0].checked
+    const val_Photo = document.getElementsByName("photo")[0].checked
     const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
     const val_Status = document.getElementsByName("status")[0].value
     const val_Destination = document.getElementsByName("destination")[0].value
@@ -196,14 +196,14 @@ function propertiesObjectGenerator(submitType){
     //     }
     // })
     const val_Contents = document.getElementsByName("contents")[0].value
-    const val_Fragile = document.getElementsByName("fragile")[0].checked
+    const val_Photo = document.getElementsByName("photo")[0].checked
     const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
     const val_Status = document.getElementsByName("status")[0].value
     const val_Destination = document.getElementsByName("destination")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     const propertiesObject = {
         "DestinationDetails": val_DestinationDetails,
-        "Fragile": val_Fragile,
+        "Photo": val_Photo,
         "TruckOrientation": val_TruckOrientation,
         "Category": val_Category,
         "Destination":val_Destination,
