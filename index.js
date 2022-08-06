@@ -145,26 +145,10 @@ function itemObjectGenerator(req, res, next) {
     },
     "Floor Number": {
       id: "wwyY",
-      type: "rich_text",
-      rich_text: [
-        {
-          type: "text",
-          text: {
-            content: requestBody["FloorNumber"],
-            link: null,
-          },
-          annotations: {
-            bold: false,
-            italic: false,
-            strikethrough: false,
-            underline: false,
-            code: false,
-            color: "default",
-          },
-          plain_text: requestBody["FloorNumber"],
-          href: null,
-        },
-      ],
+      type: "select",
+      select: {
+        name: requestBody["FloorNumber"],
+      },
     },
     "Sub Category": {
       id: "%7D%3Dev",

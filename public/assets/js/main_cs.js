@@ -71,7 +71,7 @@ async function editOldItemSetup(previousDetails){
     const metaDetails = `Entry Code: ${deconstruct(previousEntryData,"Entry Code")[0]['plain_text']}: ${utcToIst(deconstruct(previousEntryData,"Added Date"))}\nEdit Code: ${forAlert_editCode}: ${utcToIst(deconstruct(previousEntryData,"Last Edited Date"))}`
     window.alert(metaDetails)
     // Modifying values in the form
-    document.getElementsByName("floor-number")[0].value = deconstruct(previousEntryData,"Floor Number")[0]['plain_text']
+    document.getElementsByName("floor-number")[0].value = deconstruct(previousEntryData,"Floor Number")['name']
     document.getElementsByName("room")[0].value = deconstruct(previousEntryData,"Room")['name']
     const category_selected = deconstruct(previousEntryData,"Category")['name']
     document.getElementsByName("category").forEach(category_element => {
@@ -137,7 +137,7 @@ function checkValidation(){
     const val_SubCategory = document.getElementsByName("sub-category")[0].value
     const val_Action = document.getElementsByName("action")[0].value
     if(
-            val_QRCID == ''
+           val_QRCID == ''
         || val_FloorNumber == ''
         || val_Room  == ''
         || val_Category  == ''
