@@ -77,7 +77,7 @@ async function editOldItemSetup(previousDetails){
     })
     document.getElementsByName("contents")[0].value = deconstruct(previousEntryData,"Contents")[0]['plain_text']
     document.getElementsByName("photo")[0].checked = deconstruct(previousEntryData, "Photo")
-    document.getElementsByName("truck-orientation")[0].value = deconstruct(previousEntryData,"Truck Orientation")['name']
+    document.getElementsByName("item")[0].value = deconstruct(previousEntryData,"Item")['name']
     document.getElementsByName("status")[0].value = deconstruct(previousEntryData,"Status")['name']
     document.getElementsByName("destination")[0].value = deconstruct(previousEntryData,"Destination")['name']
     document.getElementsByName("destination-details")[0].value = deconstruct(previousEntryData,"Destination Details")[0]['plain_text']
@@ -128,7 +128,7 @@ function checkValidation(){
     // })
     const val_Contents = document.getElementsByName("contents")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
-    const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
+    const val_Item = document.getElementsByName("item")[0].value
     const val_Status = document.getElementsByName("status")[0].value
     const val_Destination = document.getElementsByName("destination")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
@@ -138,7 +138,7 @@ function checkValidation(){
         || val_Room  == ''
         || val_Category  == ''
         || val_Contents  == ''
-        || val_TruckOrientation  == ''
+        || val_Item  == ''
         || val_Status  == ''
         || val_Destination  == ''
         || val_DestinationDetails == ''
@@ -197,14 +197,14 @@ function propertiesObjectGenerator(submitType){
     // })
     const val_Contents = document.getElementsByName("contents")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
-    const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
+    const val_Item = document.getElementsByName("item")[0].value
     const val_Status = document.getElementsByName("status")[0].value
     const val_Destination = document.getElementsByName("destination")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     const propertiesObject = {
         "DestinationDetails": val_DestinationDetails,
         "Photo": val_Photo,
-        "TruckOrientation": val_TruckOrientation,
+        "Item": val_Item,
         "Category": val_Category,
         "Destination":val_Destination,
         "Contents": val_Contents,

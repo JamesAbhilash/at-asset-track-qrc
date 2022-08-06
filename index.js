@@ -122,11 +122,11 @@ function itemObjectGenerator(req, res, next) {
       type: "checkbox",
       checkbox: requestBody["Photo"],
     },
-    "Truck Orientation": {
+    "Item": {
       id: "ELMv",
       type: "select",
       select: {
-        name: requestBody["TruckOrientation"],
+        name: requestBody["Item"],
       },
     },
     "Category": {
