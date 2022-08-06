@@ -1,4 +1,4 @@
-// Globals
+// Global Variables
 USERNAME = ""
 // PRIMARY_URL ="http://localhost:8000/"
 PRIMARY_URL = "https://qrcode-asset-tracking.herokuapp.com/"
