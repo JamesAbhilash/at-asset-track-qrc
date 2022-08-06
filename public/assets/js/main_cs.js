@@ -1,4 +1,4 @@
-// Globals
+// Global Variables
 USERNAME = ""
 // **DEV SECTION BEGIN
 // PRIMARY_URL ="http://192.168.29.114:8000/"
