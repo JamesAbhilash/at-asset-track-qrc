@@ -13,6 +13,7 @@ PRIMARY_URL ="http://192.168.29.114:8000/"
 // Adding Event Listeners
 document.getElementById("main-icon").addEventListener("click",loginUser)
 document.getElementById("form-submit-button").addEventListener("click",submitForm)
+document.getElementsByName("item")[0].addEventListener("change",itemSubCategoryListGenerator)
 
 cookieCheck()
 
@@ -57,6 +58,9 @@ async function checkData(){
     if(response.results.length !== 0){
         await editOldItemSetup(response.results[0])
     }
+    else {
+        await onNewLoadRuns()
+    }
 }
 
 async function editOldItemSetup(previousDetails){
@@ -78,7 +82,9 @@ async function editOldItemSetup(previousDetails){
     document.getElementsByName("contents")[0].value = deconstruct(previousEntryData,"Contents")[0]['plain_text']
     document.getElementsByName("photo")[0].checked = deconstruct(previousEntryData, "Photo")
     document.getElementsByName("item")[0].value = deconstruct(previousEntryData,"Item")['name']
-    document.getElementsByName("status")[0].value = deconstruct(previousEntryData,"Status")['name']
+    // Running linked list generator for sub category dropdown list immediately after item gets populated
+    itemSubCategoryListGenerator()
+    document.getElementsByName("sub-category")[0].value = deconstruct(previousEntryData,"Sub Category")['name']
     document.getElementsByName("destination")[0].value = deconstruct(previousEntryData,"Destination")['name']
     document.getElementsByName("destination-details")[0].value = deconstruct(previousEntryData,"Destination Details")[0]['plain_text']
 }
@@ -129,7 +135,7 @@ function checkValidation(){
     const val_Contents = document.getElementsByName("contents")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
-    const val_Status = document.getElementsByName("status")[0].value
+    const val_SubCategory = document.getElementsByName("sub-category")[0].value
     const val_Destination = document.getElementsByName("destination")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     if(
@@ -139,7 +145,7 @@ function checkValidation(){
         || val_Category  == ''
         || val_Contents  == ''
         || val_Item  == ''
-        || val_Status  == ''
+        || val_SubCategory  == ''
         || val_Destination  == ''
         || val_DestinationDetails == ''
     ){
@@ -198,7 +204,7 @@ function propertiesObjectGenerator(submitType){
     const val_Contents = document.getElementsByName("contents")[0].value
     const val_Photo = document.getElementsByName("photo")[0].checked
     const val_Item = document.getElementsByName("item")[0].value
-    const val_Status = document.getElementsByName("status")[0].value
+    const val_SubCategory = document.getElementsByName("sub-category")[0].value
     const val_Destination = document.getElementsByName("destination")[0].value
     const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
     const propertiesObject = {
@@ -209,7 +215,7 @@ function propertiesObjectGenerator(submitType){
         "Destination":val_Destination,
         "Contents": val_Contents,
         "FloorNumber": val_FloorNumber,
-        "Status": val_Status,
+        "SubCategory": val_SubCategory,
         "Room":val_Room,
         "QRCID": val_QRCID
     }
@@ -237,6 +243,29 @@ function deconstruct(properties,property){
     return properties[property][properties[property]['type']]
 }
 
+// Dynaminc Dropdown Linked List generators
+// Sub Category list generator. Generates array and adds elements to the dom
+function itemSubCategoryListGenerator(){
+    const elm_Item = document.getElementsByName("item")[0]
+    const elm_SubCategory = document.getElementsByName("sub-category")[0]
+    elm_SubCategory.innerHTML = ''
+
+    const elm_SubCategory_0 = document.createElement('option')
+    elm_SubCategory_0.value = ''
+    elm_SubCategory_0.innerText = 'Sub Category'
+    
+    elm_SubCategory.appendChild(elm_SubCategory_0)
+
+    if(elm_Item.value !== null && elm_Item.value !== ''){
+        itemCategory[elm_Item.value]['itemSubCategoryArray'].forEach(subCategory =>{
+            var elm_SubCategory_n = document.createElement('option')
+            elm_SubCategory_n.value = subCategory
+            elm_SubCategory_n.innerText = subCategory
+            elm_SubCategory.appendChild(elm_SubCategory_n)
+        })
+    }   
+}
+
 // Convert UTC to readable date and time
 function utcToIst(dateValue){
     const date = new Date(dateValue)
@@ -259,4 +288,10 @@ function usernameCookie(){
         }
     })
     return username
+}
+
+// On load runs
+async function onNewLoadRuns(){
+    // Dynamic drop down list generator for sub category
+    itemSubCategoryListGenerator()
 }

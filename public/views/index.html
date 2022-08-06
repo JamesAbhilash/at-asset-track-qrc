@@ -14,6 +14,7 @@
     />
   </head>
   <body>
+    <script src="../assets/js/relation_obj_cs.js"></script>
     <script src="../assets/js/main_cs.js" defer></script>
     <div class="ui container">
       <h2 class="ui large icon header center aligned blue">
@@ -82,6 +83,7 @@
                 <option value="MENS_WASHROOM">MENS_WASHROOM</option>
                 <option value="WOMENS_WASHROOM">WOMENS_WASHROOM</option>
                 <option value="RECEPTION">RECEPTION</option>
+                <option value="ELECTRICAL">ELECTRICAL</option>
                 <option value="OUTDOOR">OUTDOOR</option>
               </select>
             </div>
@@ -128,19 +130,16 @@
                 <option value="FAN">FAN</option>
                 <option value="AIR_CONDITIONER">AIR_CONDITIONER</option>
                 <option value="LIFT_PANEL">LIFT_PANEL</option>
+                <option value="GENERAL">GENERAL</option>
               </select>
             </div>
             <div class="ui field eight wide column">
               <label></label>
-              <select class="ui dropdown" name="status" placeholder="status">
-                <option value="">Status</option>
-                <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="PACKED">PACKED</option>
-                <option value="INTRANSIT">INTRANSIT</option>
-                <option value="RECEIVED">RECEIVED</option>
-                <option value="REOPENED">REOPENED</option>
-                <option value="REPACKED">REPACKED</option>
-              </select>
+              <select
+                class="ui dropdown"
+                name="sub-category"
+                placeholder="Sub Category"
+              ></select>
             </div>
           </div>
           <div class="ui field">

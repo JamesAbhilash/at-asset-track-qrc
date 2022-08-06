@@ -189,11 +189,11 @@ function itemObjectGenerator(req, res, next) {
         },
       ],
     },
-    "Status": {
+    "Sub Category": {
       id: "%7D%3Dev",
       type: "select",
       select: {
-        name: requestBody["Status"],
+        name: requestBody["SubCategory"],
       },
     },
     "Room": {
