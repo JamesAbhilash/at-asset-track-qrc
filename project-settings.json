@@ -1,0 +1,8 @@
+{
+    "settings": {
+        "url":{
+            "dev":"http://192.168.29.114:8000/",
+            "prod":"https://qrcode-asset-tracking.herokuapp.com/"
+        }
+    }
+}

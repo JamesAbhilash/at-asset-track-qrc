@@ -94,61 +94,40 @@ function authUser(req, res, next){
 function itemObjectGenerator(req, res, next) {
   const requestBody = req.body
   var templateObject = {
-    "Destination Details": {
-      id: "%3DvTo",
-      type: "rich_text",
-      rich_text: [
-        {
-          type: "text",
-          text: {
-            content: requestBody["DestinationDetails"],
-            link: null,
-          },
-          annotations: {
-            bold: false,
-            italic: false,
-            strikethrough: false,
-            underline: false,
-            code: false,
-            color: "default",
-          },
-          plain_text: requestBody["DestinationDetails"],
-          href: null,
-        },
-      ],
-    },
-    "Fragile": {
+    "Photo": {
       id: "%3FF%5CR",
       type: "checkbox",
-      checkbox: requestBody["Fragile"],
+      checkbox: requestBody["Photo"],
     },
-    "Truck Orientation": {
+    "Item": {
       id: "ELMv",
       type: "select",
       select: {
-        name: requestBody["TruckOrientation"],
+        name: requestBody["Item"],
       },
     },
     "Category": {
       id: "EZ%60U",
-      type: "multi_select",
-      multi_select: multiSelectObjectGenerator(requestBody["Category"]),
+      type: "select",
+      select: {
+        name: requestBody["Category"],
+      },
     },
-    "Destination": {
+    "Action": {
       id: "%5CXtx",
       type: "select",
       select: {
-        name: requestBody["Destination"],
+        name: requestBody["Action"],
       },
     },
-    "Contents": {
+    "Remarks": {
       id: "%5EPe%60",
       type: "rich_text",
       rich_text: [
         {
           type: "text",
           text: {
-            content: requestBody["Contents"],
+            content: requestBody["Remarks"],
             link: null,
           },
           annotations: {
@@ -159,46 +138,30 @@ function itemObjectGenerator(req, res, next) {
             code: false,
             color: "default",
           },
-          plain_text: requestBody["Contents"],
+          plain_text: requestBody["Remarks"],
           href: null,
         },
       ],
     },
     "Floor Number": {
       id: "wwyY",
-      type: "rich_text",
-      rich_text: [
-        {
-          type: "text",
-          text: {
-            content: requestBody["FloorNumber"],
-            link: null,
-          },
-          annotations: {
-            bold: false,
-            italic: false,
-            strikethrough: false,
-            underline: false,
-            code: false,
-            color: "default",
-          },
-          plain_text: requestBody["FloorNumber"],
-          href: null,
-        },
-      ],
+      type: "select",
+      select: {
+        name: requestBody["FloorNumber"],
+      },
     },
-    "Status": {
+    "Sub Category": {
       id: "%7D%3Dev",
       type: "select",
       select: {
-        name: requestBody["Status"],
+        name: requestBody["SubCategory"],
       },
     },
-    "Mode": {
+    "Room": {
       id: "%3B%3AsT",
       type: "select",
       select: {
-        name: requestBody["Mode"],
+        name: requestBody["Room"],
       },
     },
     "QRCID": {

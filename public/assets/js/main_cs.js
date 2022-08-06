@@ -1,10 +1,19 @@
 // Global Variables
 USERNAME = ""
+// **DEV SECTION BEGIN
+PRIMARY_URL ="http://192.168.29.114:8000/"
 // PRIMARY_URL ="http://localhost:8000/"
-PRIMARY_URL = "https://qrcode-asset-tracking.herokuapp.com/"
+// **DEV SECTION END
+
+// **PROD SECTION BEGIN
+// PRIMARY_URL = "https://qrcode-asset-tracking.herokuapp.com/"
+// **PROD SECTION END
+
+
 // Adding Event Listeners
 document.getElementById("main-icon").addEventListener("click",loginUser)
 document.getElementById("form-submit-button").addEventListener("click",submitForm)
+document.getElementsByName("item")[0].addEventListener("change",itemSubCategoryListGenerator)
 
 cookieCheck()
 
@@ -49,6 +58,9 @@ async function checkData(){
     if(response.results.length !== 0){
         await editOldItemSetup(response.results[0])
     }
+    else {
+        await onNewLoadRuns()
+    }
 }
 
 async function editOldItemSetup(previousDetails){
@@ -59,17 +71,21 @@ async function editOldItemSetup(previousDetails){
     const metaDetails = `Entry Code: ${deconstruct(previousEntryData,"Entry Code")[0]['plain_text']}: ${utcToIst(deconstruct(previousEntryData,"Added Date"))}\nEdit Code: ${forAlert_editCode}: ${utcToIst(deconstruct(previousEntryData,"Last Edited Date"))}`
     window.alert(metaDetails)
     // Modifying values in the form
-    document.getElementsByName("floor-number")[0].value = deconstruct(previousEntryData,"Floor Number")[0]['plain_text']
-    document.getElementsByName("mode")[0].value = deconstruct(previousEntryData,"Mode")['name']
-    deconstruct(previousEntryData,"Category").forEach(category => {
-        document.getElementsByName(category["name"])[0].checked = true
+    document.getElementsByName("floor-number")[0].value = deconstruct(previousEntryData,"Floor Number")['name']
+    document.getElementsByName("room")[0].value = deconstruct(previousEntryData,"Room")['name']
+    const category_selected = deconstruct(previousEntryData,"Category")['name']
+    document.getElementsByName("category").forEach(category_element => {
+        if(category_selected==category_element.value){
+            category_element.checked = true
+        }
     })
-    document.getElementsByName("contents")[0].value = deconstruct(previousEntryData,"Contents")[0]['plain_text']
-    document.getElementsByName("fragile")[0].checked = deconstruct(previousEntryData, "Fragile")
-    document.getElementsByName("truck-orientation")[0].value = deconstruct(previousEntryData,"Truck Orientation")['name']
-    document.getElementsByName("status")[0].value = deconstruct(previousEntryData,"Status")['name']
-    document.getElementsByName("destination")[0].value = deconstruct(previousEntryData,"Destination")['name']
-    document.getElementsByName("destination-details")[0].value = deconstruct(previousEntryData,"Destination Details")[0]['plain_text']
+    document.getElementsByName("remarks")[0].value = deconstruct(previousEntryData,"Remarks")[0]['plain_text']
+    document.getElementsByName("photo")[0].checked = deconstruct(previousEntryData, "Photo")
+    document.getElementsByName("item")[0].value = deconstruct(previousEntryData,"Item")['name']
+    // Running linked list generator for sub category dropdown list immediately after item gets populated
+    itemSubCategoryListGenerator()
+    document.getElementsByName("sub-category")[0].value = deconstruct(previousEntryData,"Sub Category")['name']
+    document.getElementsByName("action")[0].value = deconstruct(previousEntryData,"Action")['name']
 }
 
 // Submit Form
@@ -101,30 +117,34 @@ async function checkDataPreSub(){
 function checkValidation(){
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
-    const val_Mode = document.getElementsByName("mode")[0].value
-    var val_Category = []
-    var temp_category_array = document.getElementsByClassName("category-cb")
-    Array.prototype.forEach.call(temp_category_array, function(category) {
-        if(category.checked){
-            val_Category.push(category.name)
+    const val_Room = document.getElementsByName("room")[0].value
+    var val_Category
+    document.getElementsByName("category").forEach(category_element => {
+        if(category_element.checked){
+            val_Category = category_element.value
         }
     })
-    const val_Contents = document.getElementsByName("contents")[0].value
-    const val_Fragile = document.getElementsByName("fragile")[0].checked
-    const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
-    const val_Status = document.getElementsByName("status")[0].value
-    const val_Destination = document.getElementsByName("destination")[0].value
-    const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
+    // var val_Category = []
+    // var temp_category_array = document.getElementsByClassName("category-cb")
+    // Array.prototype.forEach.call(temp_category_array, function(category) {
+    //     if(category.checked){
+    //         val_Category.push(category.name)
+    //     }
+    // })
+    const val_Remarks = document.getElementsByName("remarks")[0].value
+    const val_Photo = document.getElementsByName("photo")[0].checked
+    const val_Item = document.getElementsByName("item")[0].value
+    const val_SubCategory = document.getElementsByName("sub-category")[0].value
+    const val_Action = document.getElementsByName("action")[0].value
     if(
-            val_QRCID == ''
+           val_QRCID == ''
         || val_FloorNumber == ''
-        || val_Mode  == ''
+        || val_Room  == ''
         || val_Category  == ''
-        || val_Contents  == ''
-        || val_TruckOrientation  == ''
-        || val_Status  == ''
-        || val_Destination  == ''
-        || val_DestinationDetails == ''
+        || val_Remarks  == ''
+        || val_Item  == ''
+        || val_SubCategory  == ''
+        || val_Action  == ''
     ){
         window.alert("Fields Cannot Be Empty!")
         return ("VALIDATION FAIL")
@@ -164,30 +184,34 @@ function propertiesObjectGenerator(submitType){
     const submitCode = usernameCookie()
     const val_QRCID = window.location.pathname.replace("/","").trim()
     const val_FloorNumber = document.getElementsByName("floor-number")[0].value
-    const val_Mode = document.getElementsByName("mode")[0].value
-    var val_Category = []
-    var temp_category_array = document.getElementsByClassName("category-cb")
-    Array.prototype.forEach.call(temp_category_array, function(category) {
-        if(category.checked){
-            val_Category.push(category.name)
+    const val_Room = document.getElementsByName("room")[0].value
+    var val_Category
+    document.getElementsByName("category").forEach(category_element => {
+        if(category_element.checked){
+            val_Category = category_element.value
         }
     })
-    const val_Contents = document.getElementsByName("contents")[0].value
-    const val_Fragile = document.getElementsByName("fragile")[0].checked
-    const val_TruckOrientation = document.getElementsByName("truck-orientation")[0].value
-    const val_Status = document.getElementsByName("status")[0].value
-    const val_Destination = document.getElementsByName("destination")[0].value
-    const val_DestinationDetails = document.getElementsByName("destination-details")[0].value
+    // var val_Category = []
+    // var temp_category_array = document.getElementsByClassName("category-cb")
+    // Array.prototype.forEach.call(temp_category_array, function(category) {
+    //     if(category.checked){
+    //         val_Category.push(category.name)
+    //     }
+    // })
+    const val_Remarks = document.getElementsByName("remarks")[0].value
+    const val_Photo = document.getElementsByName("photo")[0].checked
+    const val_Item = document.getElementsByName("item")[0].value
+    const val_SubCategory = document.getElementsByName("sub-category")[0].value
+    const val_Action = document.getElementsByName("action")[0].value
     const propertiesObject = {
-        "DestinationDetails": val_DestinationDetails,
-        "Fragile": val_Fragile,
-        "TruckOrientation": val_TruckOrientation,
+        "Photo": val_Photo,
+        "Item": val_Item,
         "Category": val_Category,
-        "Destination":val_Destination,
-        "Contents": val_Contents,
+        "Action":val_Action,
+        "Remarks": val_Remarks,
         "FloorNumber": val_FloorNumber,
-        "Status": val_Status,
-        "Mode":val_Mode,
+        "SubCategory": val_SubCategory,
+        "Room":val_Room,
         "QRCID": val_QRCID
     }
     if(submitType == 0){
@@ -214,6 +238,29 @@ function deconstruct(properties,property){
     return properties[property][properties[property]['type']]
 }
 
+// Dynaminc Dropdown Linked List generators
+// Sub Category list generator. Generates array and adds elements to the dom
+function itemSubCategoryListGenerator(){
+    const elm_Item = document.getElementsByName("item")[0]
+    const elm_SubCategory = document.getElementsByName("sub-category")[0]
+    elm_SubCategory.innerHTML = ''
+
+    const elm_SubCategory_0 = document.createElement('option')
+    elm_SubCategory_0.value = ''
+    elm_SubCategory_0.innerText = 'Sub Category'
+    
+    elm_SubCategory.appendChild(elm_SubCategory_0)
+
+    if(elm_Item.value !== null && elm_Item.value !== ''){
+        itemCategory[elm_Item.value]['itemSubCategoryArray'].forEach(subCategory =>{
+            var elm_SubCategory_n = document.createElement('option')
+            elm_SubCategory_n.value = subCategory
+            elm_SubCategory_n.innerText = subCategory
+            elm_SubCategory.appendChild(elm_SubCategory_n)
+        })
+    }   
+}
+
 // Convert UTC to readable date and time
 function utcToIst(dateValue){
     const date = new Date(dateValue)
@@ -236,4 +283,10 @@ function usernameCookie(){
         }
     })
     return username
+}
+
+// On load runs
+async function onNewLoadRuns(){
+    // Dynamic drop down list generator for sub category
+    itemSubCategoryListGenerator()
 }

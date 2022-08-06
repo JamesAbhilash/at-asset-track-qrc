@@ -14,6 +14,7 @@
     />
   </head>
   <body>
+    <script src="../assets/js/relation_obj_cs.js"></script>
     <script src="../assets/js/main_cs.js" defer></script>
     <div class="ui container">
       <h2 class="ui large icon header center aligned blue">
@@ -22,7 +23,7 @@
           class="circular qrcode icon"
           style="user-select: auto; margin-top: 1rem"
         ></i
-        >QR CODE LOGISTICS
+        >QR ASSET TRACKING
       </h2>
       <div class="ui icon input fluid">
         <input
@@ -50,104 +51,119 @@
           <div class="ui grid">
             <div class="eight wide column field">
               <label></label>
-              <input
-                type="text"
+              <select
+                class="ui dropdown"
                 name="floor-number"
                 placeholder="Floor Number"
-              />
+              >
+                <option value="">Floor Number</option>
+                <option value="GROUND">GROUND</option>
+                <option value="MEZ_GROUND">MEZ_GROUND</option>
+                <option value="FIRST">FIRST</option>
+                <option value="SECOND">SECOND</option>
+                <option value="THIRD">THIRD</option>
+                <option value="FOURTH">FOURTH</option>
+                <option value="PENT_HOUSE">PENT_HOUSE</option>
+              </select>
             </div>
             <div class="eight wide column field">
               <label></label>
-              <select class="ui dropdown" name="mode" placeholder="Mode">
-                <option value="">Mode</option>
-                <option value="OPEN">OPEN</option>
-                <option value="BOXED">BOXED</option>
+              <select class="ui dropdown" name="room" placeholder="Room">
+                <option value="">Room</option>
+                <option value="MD">MD</option>
+                <option value="MANAGER">MANAGER</option>
+                <option value="MEETING">MEETING</option>
+                <option value="CONFERENCE">CONFERENCE</option>
+                <option value="COMMON_SPACE">COMMON_SPACE</option>
+                <option value="LAB">LAB</option>
+                <option value="SERVER">SERVER</option>
+                <option value="STORE">STORE</option>
+                <option value="LUNCH">LUNCH</option>
+                <option value="PANTRY">PANTRY</option>
+                <option value="MENS_WASHROOM">MENS_WASHROOM</option>
+                <option value="WOMENS_WASHROOM">WOMENS_WASHROOM</option>
+                <option value="RECEPTION">RECEPTION</option>
+                <option value="ELECTRICAL">ELECTRICAL</option>
+                <option value="OUTDOOR">OUTDOOR</option>
               </select>
             </div>
           </div>
-          <div class="ui field">
-            <div class="ui checkbox">
-              <input class="category-cb" type="checkbox" name="FURNITURE" />
+          <div class="ui grouped field">
+            <div class="ui radio checkbox">
+              <input
+                class="category-rb"
+                type="radio"
+                name="category"
+                value="FURNITURE"
+              />
               <label style="margin-right: 1rem">FURNITURE</label>
             </div>
-            <div class="ui checkbox">
-              <input class="category-cb" type="checkbox" name="TOOLS" />
-              <label style="margin-right: 1rem">TOOLS</label>
+            <div class="ui radio checkbox">
+              <input
+                class="category-rb"
+                type="radio"
+                name="category"
+                value="FIXTURE"
+              />
+              <label style="margin-right: 1rem">FIXTURE</label>
             </div>
-            <div class="ui checkbox">
-              <input class="category-cb" type="checkbox" name="EQUIPMENT" />
-              <label style="margin-right: 1rem">EQUIPMENT</label>
-            </div>
-            <div class="ui checkbox">
-              <input class="category-cb" type="checkbox" name="RECORDS" />
-              <label style="margin-right: 1rem">RECORDS</label>
-            </div>
-          </div>
-          <div class="ui field">
-            <textarea
-              name="contents"
-              rows="1"
-              style="user-select: auto"
-              placeholder="Contents"
-            ></textarea>
-          </div>
-          <div class="ui field">
-            <div class="ui checkbox toggle">
-              <input type="checkbox" name="fragile" checked />
-              <label>Fragile</label>
+            <div class="ui radio checkbox">
+              <input
+                class="category-rb"
+                type="radio"
+                name="category"
+                value="APPLIANCE"
+              />
+              <label style="margin-right: 1rem">APPLIANCE</label>
             </div>
           </div>
           <div class="ui grid">
             <div class="ui field eight wide column">
               <label></label>
-              <select
-                class="ui dropdown"
-                name="truck-orientation"
-                placeholder="Truck Orientation"
-              >
-                <option value="">Truck Orientation</option>
-                <option value="NOTAPPL">NOTAPPL</option>
-                <option value="FRONT">FRONT</option>
-                <option value="MIDDLE">MIDDLE</option>
-                <option value="BACK">BACK</option>
-                <option value="SIDES">SIDES</option>
+              <select class="ui dropdown" name="item" placeholder="Item">
+                <option value="">Item</option>
+                <option value="TABLE">TABLE</option>
+                <option value="CHAIR">CHAIR</option>
+                <option value="SOFA">SOFA</option>
+                <option value="CABINET">CABINET</option>
+                <option value="LIGHT">LIGHT</option>
+                <option value="FAN">FAN</option>
+                <option value="AIR_CONDITIONER">AIR_CONDITIONER</option>
+                <option value="LIFT_PANEL">LIFT_PANEL</option>
+                <option value="GENERAL">GENERAL</option>
               </select>
             </div>
             <div class="ui field eight wide column">
               <label></label>
-              <select class="ui dropdown" name="status" placeholder="status">
-                <option value="">Status</option>
-                <option value="IN PROGRESS">IN PROGRESS</option>
-                <option value="PACKED">PACKED</option>
-                <option value="INTRANSIT">INTRANSIT</option>
-                <option value="RECEIVED">RECEIVED</option>
-                <option value="REOPENED">REOPENED</option>
-                <option value="REPACKED">REPACKED</option>
-              </select>
+              <select
+                class="ui dropdown"
+                name="sub-category"
+                placeholder="Sub Category"
+              ></select>
             </div>
           </div>
-
+          <div class="ui field">
+            <textarea
+              name="remarks"
+              rows="2"
+              style="user-select: auto"
+              placeholder="Remarks"
+            ></textarea>
+          </div>
           <div class="ui field">
             <label></label>
-            <select
-              class="ui dropdown"
-              name="destination"
-              placeholder="Destination"
-            >
-              <option value="">Destination</option>
-              <option value="OFC">OFC</option>
-              <option value="HO">HO</option>
-              <option value="HM">HM</option>
+            <select class="ui dropdown" name="action" placeholder="Action">
+              <option value="">Action</option>
+              <option value="RELOCATE">RELOCATE</option>
+              <option value="KEEP">KEEP</option>
             </select>
           </div>
 
           <div class="ui field">
-            <textarea
-              name="destination-details"
-              rows="1"
-              style="user-select: auto"
-              placeholder="Destination Details"
-            ></textarea>
+            <div class="ui checkbox toggle">
+              <input type="checkbox" name="photo" />
+              <label>Photograph</label>
+            </div>
           </div>
         </form>
         <button
