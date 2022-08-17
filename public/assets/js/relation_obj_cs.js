@@ -55,6 +55,17 @@ var itemCategory = {
   LIFT_PANEL: {
     itemSubCategoryArray: ["INTERNAL_LIFT_PANEL", "EXTERNAL_LIFT_PANEL"],
   },
+  COMPUTER: {
+    itemSubCategoryArray: [
+      "MONITOR_COMPUTER",
+      "CPU_COMPUTER",
+      "KEYBOARD_COMPUTER",
+      "MOUSE_COMPUTER",
+      "PRINTER_COMPUTER",
+      "SCANNER_COMPUTER",
+      "LAPTOP_COMPUTER",
+    ],
+  },
   GENERAL: {
     itemSubCategoryArray: [
       "FIRE_EXTINGUISHER_PANEL",
