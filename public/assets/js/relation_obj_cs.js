@@ -73,4 +73,4 @@ var itemCategory = {
       "OTHERS_GENERAL",
     ],
   },
-}
+};
