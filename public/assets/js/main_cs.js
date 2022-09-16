@@ -7,7 +7,7 @@ USERNAME = ""
 
 // **PROD SECTION BEGIN
 // PRIMARY_URL = "https://qrcode-asset-tracking.herokuapp.com/"
-PRIMARY_URL = window.location.origin
+PRIMARY_URL = (window.location.origin)+"/"
 // **PROD SECTION END
 
 
