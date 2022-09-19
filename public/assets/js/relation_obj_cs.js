@@ -70,6 +70,7 @@ var itemCategory = {
     itemSubCategoryArray: [
       "FIRE_EXTINGUISHER_PANEL",
       "FIRE_EXTINGUISHER",
+      "REMOTE_FOR_AIR_CONDITIONER",
       "OTHERS_GENERAL",
     ],
   },
