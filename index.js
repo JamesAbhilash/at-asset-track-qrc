@@ -19,7 +19,7 @@ const authorizedUsers = [
   "9866074207_1213",
   "9866706524_0102"
 ]
-
+// Adding comment for commits
 // Notion data
 const { Client } = require("@notionhq/client")
 
